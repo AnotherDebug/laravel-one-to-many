@@ -43,6 +43,13 @@
               Types List
             </a>
           </li>
+          <li>
+            <a href="{{ route('admin.type-projects') }}" class="nav-link {{ Route::currentRouteName() == 'admin.type-projects' ? 'active' : 'text-white' }}">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+              <i class="fa-solid fa-table-list me-1 {{ Route::currentRouteName() == 'admin.type-projects' ? 'ad-green' : '' }}"></i>
+              Type-Project List
+            </a>
+          </li>
         </ul>
         {{-- <hr>
         <div class="dropdown">
