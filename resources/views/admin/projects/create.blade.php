@@ -36,6 +36,18 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="type_id" class="form-label fw-bolder">Type:</label>
+                            <select name="type_id" class="form-select" id="type_id">
+                                <option value="">Choose the type:</option>
+                                @foreach ($types as $type)
+                                <option value="{{ $type->id }}"
+                                    @if ($type->id == old('type_id', $project?->type?->id)) selected @endif>
+                                    {{ $type->name }}
+                                </option>
+                                @endforeach
+                              </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="date_start" class="form-label fw-bolder">Date
                                 start:</label>
                             <input type="date" name="date_start"
@@ -55,7 +67,9 @@
                         </div>
                         <div class="thumb w-25 mb-4">
                             <label for="imagePreview" class="form-label d-block fw-bolder">Image preview</label>
-                            <img id="imagePreview" src="{{ old('image') ? asset('storage/'. old('image')) : 'https://via.placeholder.com/200x200' }}" class="img-fluid" alt="">
+                            <img id="imagePreview"
+                                src="{{ old('image') ? asset('storage/' . old('image')) : 'https://via.placeholder.com/200x200' }}"
+                                class="img-fluid" alt="">
                             {{-- <p><strong>Name Photo:</strong>{{ old('image_original_name') }}</p> --}}
                         </div>
                         <div class="mb-3">
@@ -86,19 +100,19 @@
         }
 
         document.getElementById('image').addEventListener('change', function() {
-        const preview = document.getElementById('imagePreview');
-        const fileInput = this;
+            const preview = document.getElementById('imagePreview');
+            const fileInput = this;
 
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
 
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-            };
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                };
 
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    });
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        });
     </script>
 
 
