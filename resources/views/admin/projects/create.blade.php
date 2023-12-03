@@ -40,12 +40,11 @@
                             <select name="type_id" class="form-select" id="type_id">
                                 <option value="">Choose the type:</option>
                                 @foreach ($types as $type)
-                                <option value="{{ $type->id }}"
-                                    @if ($type->id == old('type_id', $project?->type?->id)) selected @endif>
-                                    {{ $type->name }}
-                                </option>
+                                    <option value="{{ $type->id }}" @if ($type->id == old('type_id', $project?->type?->id)) selected @endif>
+                                        {{ $type->name }}
+                                    </option>
                                 @endforeach
-                              </select>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="date_start" class="form-label fw-bolder">Date
@@ -74,11 +73,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label "><strong>Description:</strong></label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="3"
-                                name="description" onkeyup="conto(500)">{{ old('description') }}</textarea>
-                            @error('description')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            <div id="editor" class="ck-editor__editable" >
+                                <textarea class="form-control @error('description') is-invalid @enderror " id="description" rows="3"
+                                    name="description" onkeyup="conto(500)">{{ old('description') }}</textarea>
+                                @error('description')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <small class="text-muted">Characters remaining: <span id="char-count">500</span></small>
                         </div>
 
@@ -113,6 +114,12 @@
                 reader.readAsDataURL(fileInput.files[0]);
             }
         });
+
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 
 

@@ -47,6 +47,9 @@ aside {
     width: 100%;
     padding: 20px;
     overflow-y: auto;
+    .ck-editor__editable {
+        min-height: 200px;
+    }
 }
 
 .edit {

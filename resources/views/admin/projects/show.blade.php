@@ -15,7 +15,7 @@
             <p><strong>Type:</strong> {{ $project->type->name }}</p>
         @endif
         <p><strong>Date Start:</strong> {{$project->date_start}}</p>
-        <p><strong>Description:</strong> {{$project->description}}</p>
+        <p><strong>Description:</strong> {!! $project->description !!}</p>
         <div class="img">
             <img class="w-50" src="{{asset('storage/'.$project->image)}}" alt="{{ $project->image_original_name }}">
         </div>
