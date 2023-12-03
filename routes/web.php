@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function() {
         Route::get('/', [DashboardController::class, 'index'])->name('home');
         Route::resource('projects', ProjectController::class);
-        // Route::resource('technologies', TechnologyController::class);
+        Route::resource('technologies', TechnologyController::class);
         // Route::resource('type', TypeController::class);
     });
 
