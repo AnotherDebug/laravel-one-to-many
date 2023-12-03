@@ -11,6 +11,9 @@
             ])</h1>
 
         <h2>{{ $project->name }}</h2>
+        @if ($project->type)
+            <p><strong>Type:</strong> {{ $project->type->name }}</p>
+        @endif
         <p><strong>Date Start:</strong> {{$project->date_start}}</p>
         <p><strong>Description:</strong> {{$project->description}}</p>
         <div class="img">
